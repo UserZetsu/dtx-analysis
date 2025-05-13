@@ -1,9 +1,9 @@
 import json
 import pandas as pd
 
-def main(): 
+def clean_json(path): 
     # Load Json
-    with open('data/ctg-studies.json', 'r') as file:
+    with open(path, 'r') as file:
         studies = json.load(file)
         
     rows = list()
@@ -65,7 +65,8 @@ def main():
     return df
     
 if __name__ == "__main__":
-    df = main()
+    path = 'data/ctg-studies.json'
+    df = clean_json(path)
     
     # Save to CSV
-    df.to_csv('data/pulled_ctg_studies.csv', index=False)
+    df.to_csv(f'{path[::-5]}.csv', index=False)
